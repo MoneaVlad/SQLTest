@@ -1,0 +1,49 @@
+version: "3.8"
+
+services:
+  firebird:
+    image: jacobalberty/firebird:latest
+    ports:
+      - 3050:3050
+    environment:
+      FIREBIRD_DATABASE: books
+      FIREBIRD_USER: admin
+      FIREBIRD_PASSWORD: admin
+    networks:
+      - database
+
+  postgres:
+    image: postgres:12
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: books
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    networks:
+      - database
+  
+  mysql:
+    image: mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: books
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+      MYSQL_ROOT_PASSWORD: admin
+    networks:
+      - database
+
+  cadvisor:
+    image: google/cadvisor
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    ports:
+      - 8080:8080
+
+networks:
+  database:
