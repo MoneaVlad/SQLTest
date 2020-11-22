@@ -4,17 +4,14 @@ from time import sleep
 
 
 # testing_mysql.write_test.test_one_write
-import testing_mysql.write_test
+import testing_postgresql.write_test
 
 # testing_mysql.read_test.test_one_read
-import testing_mysql.read_test
+import testing_postgresql.read_test
 
-test_function = testing_mysql.write_test.test_one_write
+test_function = testing_postgresql.read_test.test_one_read
 
-IP = '127.0.0.1'
-PORT = 3306
-
-QPS = 10
+QPS = 1
 TEST_DURATION = 10 * 60
 
 
