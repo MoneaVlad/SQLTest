@@ -34,6 +34,18 @@ services:
       MYSQL_ROOT_PASSWORD: admin
     networks:
       - database
+  
+  mariadb:
+    image: mariadb
+    ports:
+      - 3307:3307
+    environment:
+      MYSQL_DATABASE: books
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+      MYSQL_ROOT_PASSWORD: admin
+    networks:
+      - database
 
   cadvisor:
     image: google/cadvisor
